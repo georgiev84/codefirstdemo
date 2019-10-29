@@ -2,6 +2,7 @@ package app.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -24,6 +25,7 @@ public class Customer extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
+
     @Column(name = "email")
     public String getEmail() {
         return email;
@@ -32,6 +34,7 @@ public class Customer extends BaseEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Column(name = "credit_card_number")
     public String getCreditCardNumber() {
         return creditCardNumber;
@@ -40,7 +43,8 @@ public class Customer extends BaseEntity {
     public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
-    // TODO
+
+    @OneToMany(targetEntity = Sale.class, mappedBy = "customer")
     public Set<Sale> getSales() {
         return sales;
     }

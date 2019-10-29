@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class CodeFirstApplication {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("soft_uni");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("code_first_demo");
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 

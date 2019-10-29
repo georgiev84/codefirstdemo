@@ -2,6 +2,7 @@ package app.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Set;
@@ -26,6 +27,7 @@ public class Product extends BaseEntity{
     public void setName(String name) {
         this.name = name;
     }
+
     @Column(name = "quantity")
     public Double getQuantity() {
         return quantity;
@@ -44,12 +46,13 @@ public class Product extends BaseEntity{
         this.price = price;
     }
 
+    @OneToMany(targetEntity = Sale.class, mappedBy = "product")
     public Set<Sale> getSales() {
         return sales;
     }
 
 
-    // TODO
+
     public void setSales(Set<Sale> sales) {
         this.sales = sales;
     }

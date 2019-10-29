@@ -1,7 +1,6 @@
 package app.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -16,6 +15,8 @@ public class Sale extends BaseEntity{
     public Sale() {
     }
 
+    @ManyToOne(targetEntity = Product.class)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     public Product getProduct() {
         return product;
     }
@@ -24,6 +25,8 @@ public class Sale extends BaseEntity{
         this.product = product;
     }
 
+    @ManyToOne(targetEntity = Customer.class)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     public Customer getCustomer() {
         return customer;
     }
@@ -32,14 +35,18 @@ public class Sale extends BaseEntity{
         this.customer = customer;
     }
 
+    @ManyToOne(targetEntity = StoreLocation.class)
+    @JoinColumn(name = "store_location_id", referencedColumnName = "id")
     public StoreLocation getStoreLocation() {
         return storeLocation;
     }
+
 
     public void setStoreLocation(StoreLocation storeLocation) {
         this.storeLocation = storeLocation;
     }
 
+    @Column(name = "date")
     public LocalDate getDate() {
         return date;
     }
